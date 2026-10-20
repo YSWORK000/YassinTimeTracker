@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"NRJS-88a389abbb8d73ebe3e","applicationID":"1352105607","transactionName":"ZwcBYUNYXEZTAkVdDl5NLmNyFmFQURRDUTJEDRFUVlwdclcVd10NVU0YR1RIR1BBFUw=","queueTime":0,"applicationTime":92,"agent":"","atts":""};window.NREUM.init={privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]},feature_flags:["rum_v2"],distributed_tracing:{enabled:true}};</script>
+<script type="text/javascript" src="https://js-agent.newrelic.com/nr-loader-spa-1.324.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yassin's Time Tracker</title>
+<style>
+:root[data-palette="monochrome"]{--bg-base:#121212;--card-bg-base:#181818;--card-hover-base:#282828;--text-primary-base:#ffffff;--text-secondary-base:#b3b3b3;--accent-base:#e5e5e5;--break-accent-base:#3e3e3e;--circle-bg-base:#282828;--input-bg-base:#282828;--btn-bg-base:#ffffff;--btn-text-base:#000000}
+:root[data-palette="pink"]{--bg-base:#1a1016;--card-bg-base:#24141f;--card-hover-base:#331b2c;--text-primary-base:#fce7f3;--text-secondary-base:#f472b6;--accent-base:#f472b6;--break-accent-base:#6b1742;--circle-bg-base:#331b2c;--input-bg-base:#331b2c;--btn-bg-base:#f472b6;--btn-text-base:#1a1016}
+:root[data-palette="crimson"]{--bg-base:#1a0d0d;--card-bg-base:#261213;--card-hover-base:#381a1b;--text-primary-base:#ffebee;--text-secondary-base:#f87171;--accent-base:#f87171;--break-accent-base:#681d1d;--circle-bg-base:#381a1b;--input-bg-base:#381a1b;--btn-bg-base:#f87171;--btn-text-base:#1a0d0d}
+:root[data-palette="pastel-green"]{--bg-base:#111a14;--card-bg-base:#18261d;--card-hover-base:#22382b;--text-primary-base:#ecfdf5;--text-secondary-base:#a7f3d0;--accent-base:#a7f3d0;--break-accent-base:#114227;--circle-bg-base:#22382b;--input-bg-base:#22382b;--btn-bg-base:#a7f3d0;--btn-text-base:#111a14}
+:root[data-palette="blue"]{--bg-base:#0f172a;--card-bg-base:#1e293b;--card-hover-base:#334155;--text-primary-base:#f0f9ff;--text-secondary-base:#38bdf8;--accent-base:#38bdf8;--break-accent-base:#07476b;--circle-bg-base:#334155;--input-bg-base:#334155;--btn-bg-base:#38bdf8;--btn-text-base:#0f172a}
+:root[data-palette="orange"]{--bg-base:#1c1917;--card-bg-base:#292524;--card-hover-base:#383531;--text-primary-base:#fff7ed;--text-secondary-base:#fb923c;--accent-base:#fb923c;--break-accent-base:#7a2b08;--circle-bg-base:#383531;--input-bg-base:#383531;--btn-bg-base:#fb923c;--btn-text-base:#1c1917}
+:root{--bg:var(--bg-base);--card-bg:var(--card-bg-base);--card-hover:var(--card-hover-base);--text-primary:var(--text-primary-base);--text-secondary:var(--text-secondary-base);--accent:var(--accent-base);--break-accent:var(--break-accent-base);--circle-bg:var(--circle-bg-base);--input-bg:var(--input-bg-base);--btn-bg:var(--btn-bg-base);--btn-text:var(--btn-text-base)}
+:root[data-mode="light"]{--bg:#f8fafc;--card-bg:#ffffff;--card-hover:#f1f5f9;--text-primary:#0f172a;--text-secondary:#64748b;--circle-bg:#e2e8f0;--input-bg:#f1f5f9;--btn-bg:#0f172a;--btn-text:#ffffff;--break-accent:#cbd5e1}
+:root[data-mode="light"][data-palette="monochrome"]{--text-primary:#000000;--accent:#000000;--btn-bg:#000000}
+:root[data-mode="light"][data-palette="pink"]{--text-primary:#831843;--accent:#be185d;--text-secondary:#db2777;--btn-bg:#be185d}
+:root[data-mode="light"][data-palette="crimson"]{--text-primary:#7f1d1d;--accent:#b91c1c;--text-secondary:#dc2626;--btn-bg:#b91c1c}
+:root[data-mode="light"][data-palette="pastel-green"]{--text-primary:#064e3b;--accent:#047857;--text-secondary:#059669;--btn-bg:#047857}
+:root[data-mode="light"][data-palette="blue"]{--text-primary:#0c4a6e;--accent:#0369a1;--text-secondary:#0284c7;--btn-bg:#0369a1}
+:root[data-mode="light"][data-palette="orange"]{--text-primary:#7c2d12;--accent:#c2410c;--text-secondary:#ea580c;--btn-bg:#c2410c}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background-color:var(--bg);color:var(--text-primary);margin:0;padding:24px 16px;display:flex;flex-direction:column;align-items:center;-webkit-font-smoothing:antialiased;transition:background-color .8s cubic-bezier(.4,0,.2,1),color .3s cubic-bezier(.4,0,.2,1);overflow-x:hidden}
+body.ambient-glow{animation:ambientGlowPulse 4s ease-in-out infinite alternate}
+@keyframes ambientGlowPulse{0%{background-color:var(--bg);filter:drop-shadow(0 0 0px transparent)}100%{background-color:var(--card-bg);box-shadow:inset 0 0 100px var(--accent)}}
+.container{position:relative;background-color:var(--card-bg);border-radius:16px;padding:28px 24px;width:100%;max-width:460px;box-shadow:0 10px 30px rgba(0,0,0,.15);margin-bottom:20px;border:none;transition:background-color .3s cubic-bezier(.4,0,.2,1),transform .2s ease}
+.cog-btn-wrapper{position:absolute;top:20px;right:20px;display:flex;align-items:center;justify-content:center;background:var(--input-bg);padding:6px 14px;border-radius:20px;cursor:pointer;border:1px solid transparent;transition:all .25s cubic-bezier(.34,1.56,.64,1);z-index:10}
+.cog-btn-wrapper:hover{border-color:var(--text-secondary);transform:translateY(-1px)}
+.cog-btn-wrapper:active{transform:scale(.95)}
+.cog-label{font-size:.82rem;font-weight:700;color:var(--text-secondary);letter-spacing:.03em;transition:color .2s ease}
+.cog-btn-wrapper:hover .cog-label{color:var(--text-primary)}
+.mode-switch-wrapper{display:flex;justify-content:space-between;align-items:center;background:var(--input-bg);padding:10px 14px;border-radius:12px;margin-bottom:16px;border:1px solid var(--circle-bg)}
+.mode-switch-title{font-size:.88rem;font-weight:700;color:var(--text-primary)}
+.pill-toggle-container{display:flex;background:var(--card-bg);padding:3px;border-radius:20px;border:1px solid var(--circle-bg)}
+.pill-btn{border:none;background:transparent;color:var(--text-secondary);padding:5px 12px;border-radius:16px;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s ease}
+.pill-btn.active{background:var(--btn-bg);color:var(--btn-text)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.4,0,.2,1)}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-card{background-color:var(--card-bg);padding:24px;border-radius:16px;width:90%;max-width:380px;box-shadow:0 20px 40px rgba(0,0,0,.4);transform:scale(.92);transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.modal-overlay.active .modal-card{transform:scale(1)}
+.modal-title{font-size:1.1rem;font-weight:700;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.close-modal{background:none;border:none;color:var(--text-secondary);font-size:1.2rem;cursor:pointer;transition:transform .15s ease,color .15s ease}
+.close-modal:hover{color:var(--text-primary);transform:scale(1.15)}
+.theme-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.theme-btn{padding:10px 12px;border-radius:10px;border:1px solid var(--circle-bg);background:var(--input-bg);color:var(--text-primary);font-weight:600;font-size:.85rem;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;transition:transform .15s cubic-bezier(.4,0,.2,1),border-color .2s ease,background-color .2s ease}
+.theme-btn:hover{transform:translateY(-2px);border-color:var(--text-secondary)}
+.theme-btn:active{transform:scale(.96)}
+.theme-dot{width:12px;height:12px;border-radius:50%;box-sizing:border-box;flex-shrink:0}
+h2,h3{text-align:center;margin-top:0;margin-bottom:4px;color:var(--text-primary);font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.title-inspiration{text-align:center;font-size:.73rem;font-weight:600;color:var(--text-secondary);opacity:.65;margin-bottom:12px;letter-spacing:.02em}
+#live-clock{font-size:2.75rem;font-weight:800;text-align:center;color:var(--text-primary);margin:8px 0 4px 0;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sync-status{text-align:center;font-size:.8rem;font-weight:600;color:var(--text-secondary);margin-bottom:24px;letter-spacing:.02em}
+.circle-container{position:relative;width:210px;height:210px;margin:10px auto 20px auto;display:flex;align-items:center;justify-content:center}
+.wave-ring{position:absolute;inset:0;border-radius:50%;border:3px solid var(--accent);box-shadow:0 0 20px var(--accent);opacity:0;pointer-events:none;transform:scale(1);z-index:1}
+.wave-ring.wave-active{animation:waveExpand 1.8s cubic-bezier(.1,.8,.3,1) forwards}
+@keyframes waveExpand{0%{transform:scale(1);opacity:.95;border-width:4px}50%{opacity:.6}100%{transform:scale(2.6);opacity:0;border-width:1px}}
+.circle-svg{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg);z-index:2}
+.circle-bg{fill:none;stroke:var(--circle-bg);stroke-width:6;transition:stroke .3s ease}
+.circle-progress{fill:none;stroke:var(--text-primary);stroke-width:6;stroke-linecap:round;stroke-dasharray:628.32;stroke-dashoffset:0;transition:stroke-dashoffset .5s linear,stroke .3s ease}
+.circle-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.status-text{font-size:1.1rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);transition:color .3s ease}
+.time-remaining{font-size:2.4rem;font-weight:800;margin-top:2px;color:var(--text-primary);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.timeline-container{margin-top:24px;margin-bottom:6px}
+.timeline-label{font-size:.8rem;color:var(--text-secondary);font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;letter-spacing:.02em}
+.timeline-wrapper{position:relative;width:100%;padding-top:20px}
+.timeline-bar{position:relative;width:100%;height:10px;background-color:var(--circle-bg);border-radius:999px;overflow:hidden;transition:background-color .3s ease}
+.timeline-progress{position:absolute;top:0;left:0;height:100%;background-color:var(--accent);width:0%;transition:width .5s linear,background-color .3s ease;border-radius:999px}
+.timeline-break-segment{position:absolute;top:0;height:100%;background-color:var(--break-accent);border:1.5px solid var(--text-primary);border-radius:999px;box-sizing:border-box;z-index:3;transition:background-color .3s ease,border-color .3s ease}
+.break-time-badge{position:absolute;top:-2px;transform:translateX(-50%);font-size:.65rem;font-weight:700;color:var(--text-primary);background:var(--card-bg);border:1px solid var(--break-accent);padding:2px 6px;border-radius:6px;white-space:nowrap;z-index:5;transition:background-color .3s ease,border-color .3s ease,color .3s ease}
+.btn{background-color:var(--btn-bg);color:var(--btn-text);border:none;padding:14px 20px;border-radius:999px;cursor:pointer;font-weight:700;font-size:.95rem;letter-spacing:.02em;transition:transform .15s cubic-bezier(.34,1.56,.64,1),background-color .3s ease,opacity .2s ease}
+.btn:hover{transform:scale(1.02);opacity:.95}
+.btn:active{transform:scale(.96)}
+.settings-grid{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.row-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.setting-item{display:flex;flex-direction:column}
+.setting-item label{font-size:.8rem;margin-bottom:6px;color:var(--text-secondary);font-weight:600}
+.time-inputs{display:flex;gap:6px;align-items:center;color:var(--text-secondary);font-weight:700}
+select{background-color:var(--input-bg);color:var(--text-primary);border:1px solid transparent;padding:10px 12px;border-radius:10px;flex:1;font-size:.95rem;font-weight:600;outline:none;cursor:pointer;text-align:center;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23b3b3b3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;transition:transform .15s ease,border-color .2s ease,background-color .3s ease,color .3s ease}
+select:hover{border-color:var(--text-secondary)}
+select:focus{border-color:var(--accent)}
+select:active{transform:scale(.97)}
+.full-width{margin-top:20px;width:100%}
+.save-toast{text-align:center;font-size:.8rem;color:var(--text-secondary);margin-top:10px;display:none;font-weight:600}
+.watermark{text-align:center;font-size:.72rem;font-weight:600;color:var(--text-secondary);opacity:.45;letter-spacing:.05em;margin-top:14px;margin-bottom:-10px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="cog-btn-wrapper" onclick="toggleModal(true)"><span class="cog-label">Colors</span></div>
+  <h2>Yassin's Time Tracker</h2>
+  <div class="title-inspiration">Inspired by Abdulrahman Shehata</div>
+  <div id="live-clock">Loading...</div>
+  <div class="sync-status" id="sync-status">Synced via Africa/Cairo</div>
+  <div class="circle-container" id="circle-container">
+    <div class="wave-ring" id="wave-1"></div>
+    <div class="wave-ring" id="wave-2"></div>
+    <svg class="circle-svg" viewBox="0 0 220 220">
+      <circle class="circle-bg" cx="110" cy="110" r="100"></circle>
+      <circle class="circle-progress" id="circle-progress" cx="110" cy="110" r="100"></circle>
+    </svg>
+    <div class="circle-content">
+      <div class="status-text" id="status-text">WAITING</div>
+      <div class="time-remaining" id="time-remaining">--:--:--</div>
+    </div>
+  </div>
+  <div class="timeline-container">
+    <div class="timeline-label"><span>Shift Progress</span><span id="shift-progress-percent">0%</span></div>
+    <div class="timeline-wrapper">
+      <div class="break-time-badge" id="badge-b1"></div>
+      <div class="break-time-badge" id="badge-lunch"></div>
+      <div class="break-time-badge" id="badge-b2"></div>
+      <div class="timeline-bar" id="timeline-bar">
+        <div class="timeline-progress" id="timeline-progress"></div>
+        <div class="timeline-break-segment" id="seg-b1"></div>
+        <div class="timeline-break-segment" id="seg-lunch"></div>
+        <div class="timeline-break-segment" id="seg-b2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h3>Schedule Settings (24-Hour)</h3>
+  <div class="settings-grid" id="settings-grid"></div>
+  <button class="btn full-width" onclick="saveAndApply()">Save & Apply Schedule</button>
+  <div class="save-toast" id="save-toast">Saved to browser cache</div>
+  <div class="watermark">Designed by Yassin Sameh • Inspired by Abdulrahman Shehata</div>
+</div>
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)toggleModal(false)">
+  <div class="modal-card">
+    <div class="modal-title"><span>Appearance Settings</span><button class="close-modal" onclick="toggleModal(false)">✕</button></div>
+    <div class="mode-switch-wrapper">
+      <span class="mode-switch-title">Theme Mode</span>
+      <div class="pill-toggle-container">
+        <button class="pill-btn" id="btn-mode-dark" onclick="setMode('dark')">Dark</button>
+        <button class="pill-btn" id="btn-mode-light" onclick="setMode('light')">Light</button>
+      </div>
+    </div>
+    <div class="theme-options">
+      <button class="theme-btn" onclick="setPalette('monochrome')"><span class="theme-dot" style="background:#888;border:1px solid #fff"></span> Monochrome</button>
+      <button class="theme-btn" onclick="setPalette('pink')"><span class="theme-dot" style="background:#f472b6"></span> Vintage Pink</button>
+      <button class="theme-btn" onclick="setPalette('crimson')"><span class="theme-dot" style="background:#f87171"></span> Crimson Red</button>
+      <button class="theme-btn" onclick="setPalette('pastel-green')"><span class="theme-dot" style="background:#a7f3d0"></span> Pastel Green</button>
+      <button class="theme-btn" onclick="setPalette('blue')"><span class="theme-dot" style="background:#38bdf8"></span> Slate Blue</button>
+      <button class="theme-btn" onclick="setPalette('orange')"><span class="theme-dot" style="background:#fb923c"></span> Amber Orange</button>
+    </div>
+    <div style="text-align:center;font-size:.75rem;color:var(--text-secondary);opacity:.6;margin-top:18px">Yassin's Time Tracker v1.0 • Yassin Sameh</div>
+  </div>
+</div>
+<script>
+function getRealTime(){try{return new Date(new Date().toLocaleString("en-US",{timeZone:"Africa/Cairo"}))}catch(e){document.getElementById('sync-status').innerText="🔴 ERROR: Could not retrieve Cairo Time.";document.getElementById('sync-status').classList.add('error-text');document.getElementById('live-clock').innerText="ERROR";throw new Error("Failed time fetch.")}}
+function format12Hour(e){return e.toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:!0})}
+function format12HourShort(e){return e.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:!0})}
+function updateClock(){try{document.getElementById('live-clock').innerText=format12Hour(getRealTime())}catch(e){}}
+setInterval(updateClock,1e3);
+function autoRequestNotificationPermission(){"Notification"in window&&"default"===Notification.permission&&Notification.requestPermission().catch(()=>{})}
+function sendPhaseNotification(e,t){document.title=`🔔 ${e} - Yassin's Time Tracker`,setTimeout(()=>{document.title="Yassin's Time Tracker"},5e3),"Notification"in window&&"granted"===Notification.permission&&new Notification(e,{body:t})}
+function triggerExpandingWaves(){const e=document.getElementById('wave-1'),t=document.getElementById('wave-2');[e,t].forEach(e=>e.classList.remove('wave-active')),setTimeout(()=>e.classList.add('wave-active'),0),setTimeout(()=>t.classList.add('wave-active'),300)}
+function playEndShiftAudio(){try{const e=window.AudioContext||window.webkitAudioContext;if(!e)return;const t=new e;triggerExpandingWaves();[{freqs:[185,220,277.18,329.63],start:0,duration:2,vol:.025},{freqs:[220,277.18,329.63,415.3,554.37],start:.3,duration:6,vol:.035}].forEach(e=>{e.freqs.forEach((r,o)=>{const n=t.createOscillator(),a=t.createGain();n.type='sine',n.frequency.value=r;const s=t.currentTime+e.start,i=s+e.duration;a.gain.setValueAtTime(1e-4,s),a.gain.linearRampToValueAtTime(e.vol,s+.15),a.gain.exponentialRampToValueAtTime(1e-4,i),n.connect(a),a.connect(t.destination),n.start(s),n.stop(i)})})}catch(e){}}
+let currentPalette='monochrome',currentMode='dark';
+function setPalette(e){currentPalette=e,document.documentElement.setAttribute('data-palette',e),saveAppearance()}
+function setMode(e){currentMode=e,document.documentElement.setAttribute('data-mode',e);const t=document.getElementById('btn-mode-dark'),r=document.getElementById('btn-mode-light');t&&r&&(e==='dark'?(t.classList.add('active'),r.classList.remove('active')):(r.classList.add('active'),t.classList.remove('active'))),saveAppearance()}
+function saveAppearance(){try{localStorage.setItem('cairo_tracker_palette',currentPalette),localStorage.setItem('cairo_tracker_mode',currentMode)}catch(e){}}
+function loadSavedTheme(){try{currentPalette=localStorage.getItem('cairo_tracker_palette')||'monochrome',currentMode=localStorage.getItem('cairo_tracker_mode')||'dark'}catch(e){currentPalette='monochrome',currentMode='dark'}setPalette(currentPalette),setMode(currentMode)}
+function toggleModal(e){const t=document.getElementById('modal-overlay');e?t.classList.add('active'):t.classList.remove('active')}
+let config={shiftStart:{h:9,m:0},shiftEnd:{h:17,m:0},break1:{h:11,m:0,dur:15},lunch:{h:13,m:0,dur:30},break3:{h:15,m:0,dur:15}};
+function loadSavedSchedule(){try{const e=localStorage.getItem('cairo_tracker_schedule');e&&(config=JSON.parse(e))}catch(e){}}
+let currentPhase='WAITING',previousPhaseTracked='WAITING',shiftEndedTriggered=!1;const CIRCLE_CIRCUMFERENCE=628.32;
+function createTimeSelect(e,t,r){let o=`<div class="time-inputs"><select id="${e}-h">`;for(let e=0;e<24;e++)o+=`<option value="${e}" ${e===t?'selected':''}>${e.toString().padStart(2,'0')}</option>`;o+=`</select>:<select id="${e}-m">`;for(let e=0;e<60;e++)o+=`<option value="${e}" ${e===r?'selected':''}>${e.toString().padStart(2,'0')}</option>`;return o+='</select></div>'}
+function renderSettings(){document.getElementById('settings-grid').innerHTML=`<div class="row-two"><div class="setting-item"><label>Shift Start</label>${createTimeSelect('shiftStart',config.shiftStart.h,config.shiftStart.m)}</div><div class="setting-item"><label>Shift End</label>${createTimeSelect('shiftEnd',config.shiftEnd.h,config.shiftEnd.m)}</div></div><div class="setting-item"><label>Break 1</label>${createTimeSelect('break1',config.break1.h,config.break1.m)}</div><div class="setting-item"><label>Lunch</label>${createTimeSelect('lunch',config.lunch.h,config.lunch.m)}</div><div class="setting-item"><label>Break 2</label>${createTimeSelect('break3',config.break3.h,config.break3.m)}</div>`}
+function saveAndApply(){['shiftStart','shiftEnd','break1','lunch','break3'].forEach(e=>{config[e].h=parseInt(document.getElementById(`${e}-h`).value),config[e].m=parseInt(document.getElementById(`${e}-m`).value)});try{localStorage.setItem('cairo_tracker_schedule',JSON.stringify(config));const e=document.getElementById('save-toast');e.style.display='block',setTimeout(()=>{e.style.display='none'},2500)}catch(e){}shiftEndedTriggered=!1,document.body.classList.remove('ambient-glow'),evaluateSchedule()}
+function getTargetTime(e,t,r){let o=new Date(r);return o.setHours(e,t,0,0),o}
+function updateCircleProgress(e){const t=document.getElementById('circle-progress'),r=Math.min(1,Math.max(0,e));t.style.strokeDashoffset=CIRCLE_CIRCUMFERENCE*(1-r)}
+function evaluateSchedule(){let e;try{e=getRealTime()}catch(e){return}let t=getTargetTime(config.shiftStart.h,config.shiftStart.m,e),r=getTargetTime(config.shiftEnd.h,config.shiftEnd.m,e);r<=t&&(e<r?t.setDate(t.getDate()-1):r.setDate(r.getDate()+1));const o=(e,r)=>{let o=getTargetTime(config[e].h,config[e].m,t);o<t&&o.setDate(o.getDate()+1);let n=new Date(o);return n.setMinutes(n.getMinutes()+r),{start:o,end:n,name:e}};let n=o('break1',config.break1.dur),a=o('lunch',config.lunch.dur),s=o('break3',config.break3.dur);const i=document.getElementById('status-text'),l=document.getElementById('time-remaining'),c=document.getElementById('timeline-progress'),d=document.getElementById('shift-progress-percent'),u=r-t,f=(e,r,o)=>{const n=document.getElementById(e),a=document.getElementById(r);if(u>0&&o.start>=t&&o.end<=r){const e=(o.start-t)/u*100,r=(o.end-o.start)/u*100;n.style.left=`${e}%`,n.style.width=`${r}%`,n.style.display='block',a.style.left=`${e+r/2}%`,a.innerText=format12HourShort(o.start),a.style.display='block'}else n.style.display='none',a.style.display='none'};if(f('seg-b1','badge-b1',n),f('seg-lunch','badge-lunch',a),f('seg-b2','badge-b2',s),e<t||e>=r){currentPhase='ENDED',i.innerText=e<t?"UPCOMING":"SHIFT ENDED",l.innerText="--:--:--",c.style.width=e<t?"0%":"100%",d.innerText=e<t?"0%":"100%",updateCircleProgress(0),e>=r&&!shiftEndedTriggered&&'ENDED'!==previousPhaseTracked&&'WAITING'!==previousPhaseTracked&&(shiftEndedTriggered=!0,document.body.classList.add('ambient-glow'),playEndShiftAudio(),sendPhaseNotification("🎉 Shift Complete!","Great job today! Time to log off and relax.")),previousPhaseTracked=currentPhase;return}const g=Math.min(100,Math.max(0,(e-t)/u*100));c.style.width=`${g}%`,d.innerText=`${Math.floor(g)}%`;let m=[n,a,s].find(t=>e>=t.start&&e<t.end);if(m){currentPhase=m.name;const t=m.name==='break3'?'BREAK 2':m.name.toUpperCase();i.innerText=t,l.innerText=formatDiff(e,m.end),updateCircleProgress((m.end-e)/(m.end-m.start)),'WAITING'!==previousPhaseTracked&&previousPhaseTracked!==currentPhase&&sendPhaseNotification("☕ Break Time Started!",`Time for your ${t}. Take a breath!`)}else{currentPhase='WORKING',i.innerText="WORKING";let o=t,a=r;e<n.start?(o=t,a=n.start):e>=n.end&&e<a.start?(o=n.end,a=a.start):e>=a.end&&e<s.start?(o=a.end,a=s.start):e>=s.end&&(o=s.end,a=r),l.innerText=formatDiff(e,a),updateCircleProgress((a-e)/(a-o)),'WAITING'!==previousPhaseTracked&&previousPhaseTracked!==currentPhase&&'ENDED'!==previousPhaseTracked&&sendPhaseNotification("💼 Back to Work!","Break time is complete. Let's get focused.")}previousPhaseTracked=currentPhase}
+function formatDiff(e,t){let r=Math.floor((t-e)/1e3),o=Math.floor(r/3600),n=Math.floor(r%3600/60),a=r%60;return o>0?`${o}:${n.toString().padStart(2,'0')}:${a.toString().padStart(2,'0')}`:`${n.toString().padStart(2,'0')}:${a.toString().padStart(2,'0')}`}
+loadSavedTheme(),loadSavedSchedule(),autoRequestNotificationPermission(),updateClock(),renderSettings(),setInterval(evaluateSchedule,1e3);
+</script>
+</body>
+</html>
