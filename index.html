@@ -40,17 +40,17 @@
       --btn-text-base: #1a1016;
     }
     :root[data-palette="crimson"] {
-      --bg-base: #1a0d0d;
-      --card-bg-base: #261213;
-      --card-hover-base: #381a1b;
-      --text-primary-base: #ffebee;
-      --text-secondary-base: #f87171;
-      --accent-base: #f87171;
-      --break-accent-base: #681d1d;
-      --circle-bg-base: #381a1b;
-      --input-bg-base: #381a1b;
-      --btn-bg-base: #f87171;
-      --btn-text-base: #1a0d0d;
+      --bg-base: #140506;
+      --card-bg-base: #20080a;
+      --card-hover-base: #320d10;
+      --text-primary-base: #fee2e2;
+      --text-secondary-base: #b91c1c;
+      --accent-base: #b91c1c;
+      --break-accent-base: #580c10;
+      --circle-bg-base: #320d10;
+      --input-bg-base: #320d10;
+      --btn-bg-base: #b91c1c;
+      --btn-text-base: #ffffff;
     }
     :root[data-palette="pastel-green"] {
       --bg-base: #111a14;
@@ -79,17 +79,17 @@
       --btn-text-base: #0f172a;
     }
     :root[data-palette="orange"] {
-      --bg-base: #1c1917;
-      --card-bg-base: #292524;
-      --card-hover-base: #383531;
+      --bg-base: #1c0d02;
+      --card-bg-base: #2a1405;
+      --card-hover-base: #3d1d07;
       --text-primary-base: #fff7ed;
       --text-secondary-base: #fb923c;
       --accent-base: #fb923c;
       --break-accent-base: #7a2b08;
-      --circle-bg-base: #383531;
-      --input-bg-base: #383531;
+      --circle-bg-base: #3d1d07;
+      --input-bg-base: #3d1d07;
       --btn-bg-base: #fb923c;
-      --btn-text-base: #1c1917;
+      --btn-text-base: #1c0d02;
     }
 
     /* DEFAULT / DARK MODE ASSIGNMENT */
@@ -107,52 +107,82 @@
       --btn-text: var(--btn-text-base);
     }
 
-    /* LIGHT MODE OVERRIDES WITH DARK PALETTE ACCENTS FOR TEXT & BUTTONS */
+    /* LIGHT MODE OVERRIDES WITH SUBTLE PALETTE TINTS FOR BACKGROUNDS */
     :root[data-mode="light"] {
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --card-hover: #f1f5f9;
-      --circle-bg: #e2e8f0;
-      --input-bg: #f1f5f9;
-      --break-accent: #cbd5e1;
       --btn-text: #ffffff;
     }
 
     :root[data-mode="light"][data-palette="monochrome"] {
+      --bg: #f4f4f5;
+      --card-bg: #ffffff;
+      --card-hover: #e4e4e7;
+      --circle-bg: #e4e4e7;
+      --input-bg: #f4f4f5;
+      --break-accent: #d4d4d8;
       --accent: #262626;
       --text-primary: #171717;
       --text-secondary: #525252;
       --btn-bg: #171717;
     }
     :root[data-mode="light"][data-palette="pink"] {
-      --accent: #831843;
-      --text-primary: #500724;
-      --text-secondary: #9d174d;
-      --btn-bg: #831843;
+      --bg: #fdf2f8;
+      --card-bg: #ffffff;
+      --card-hover: #fce7f3;
+      --circle-bg: #fbcfe8;
+      --input-bg: #fdf2f8;
+      --break-accent: #f472b6;
+      --accent: #be185d;
+      --text-primary: #be185d;
+      --text-secondary: #db2777;
+      --btn-bg: #be185d;
     }
     :root[data-mode="light"][data-palette="crimson"] {
-      --accent: #7f1d1d;
-      --text-primary: #450a0a;
-      --text-secondary: #991b1b;
-      --btn-bg: #7f1d1d;
+      --bg: #fff1f2;
+      --card-bg: #ffffff;
+      --card-hover: #ffe4e6;
+      --circle-bg: #fecdd3;
+      --input-bg: #fff1f2;
+      --break-accent: #fda4af;
+      --accent: #991b1b;
+      --text-primary: #991b1b;
+      --text-secondary: #dc2626;
+      --btn-bg: #991b1b;
     }
     :root[data-mode="light"][data-palette="pastel-green"] {
+      --bg: #f0fdf4;
+      --card-bg: #ffffff;
+      --card-hover: #dcfce7;
+      --circle-bg: #bbf7d0;
+      --input-bg: #f0fdf4;
+      --break-accent: #86efac;
       --accent: #064e3b;
       --text-primary: #022c22;
       --text-secondary: #065f46;
       --btn-bg: #064e3b;
     }
     :root[data-mode="light"][data-palette="blue"] {
+      --bg: #f0f9ff;
+      --card-bg: #ffffff;
+      --card-hover: #e0f2fe;
+      --circle-bg: #bae6fd;
+      --input-bg: #f0f9ff;
+      --break-accent: #7dd3fc;
       --accent: #0c4a6e;
       --text-primary: #082f49;
       --text-secondary: #075985;
       --btn-bg: #0c4a6e;
     }
     :root[data-mode="light"][data-palette="orange"] {
-      --accent: #7c2d12;
-      --text-primary: #431407;
-      --text-secondary: #9a3412;
-      --btn-bg: #7c2d12;
+      --bg: #fff7ed;
+      --card-bg: #ffffff;
+      --card-hover: #ffedd5;
+      --circle-bg: #fed7aa;
+      --input-bg: #fff7ed;
+      --break-accent: #fdba74;
+      --accent: #ea580c;
+      --text-primary: #c2410c;
+      --text-secondary: #ea580c;
+      --btn-bg: #ea580c;
     }
 
     body {
@@ -190,7 +220,7 @@
       padding: 28px 24px;
       width: 100%;
       max-width: 460px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       margin-bottom: 20px;
       border: none;
       transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease;
@@ -625,6 +655,24 @@
       font-weight: 600; 
     }
 
+    .slack-notice {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background-color: var(--input-bg);
+      border: 1px solid var(--circle-bg);
+      padding: 8px 12px;
+      border-radius: 10px;
+      margin-top: 18px;
+      letter-spacing: 0.01em;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    .slack-notice span {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
     .watermark {
       text-align: center;
       font-size: 0.72rem;
@@ -691,6 +739,10 @@
   <button class="btn full-width" onclick="saveAndApply()">Save & Apply Schedule</button>
   <div class="save-toast" id="save-toast">Saved to browser cache</div>
 
+  <div class="slack-notice">
+    Message me on Slack for feedback: <span>Yassin Qassem</span>
+  </div>
+
   <div class="watermark">Designed by Yassin Sameh • Inspired by Abdulrahman Shehata</div>
 </div>
 
@@ -718,7 +770,7 @@
         <span class="theme-dot" style="background:#f472b6"></span> Vintage Pink
       </button>
       <button class="theme-btn" onclick="setPalette('crimson')">
-        <span class="theme-dot" style="background:#f87171"></span> Crimson Red
+        <span class="theme-dot" style="background:#b91c1c"></span> Crimson Red
       </button>
       <button class="theme-btn" onclick="setPalette('pastel-green')">
         <span class="theme-dot" style="background:#a7f3d0"></span> Pastel Green
