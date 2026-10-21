@@ -107,7 +107,7 @@
       --btn-text: var(--btn-text-base);
     }
 
-    /* LIGHT MODE OVERRIDES WITH SUBTLE PALETTE TINTS FOR BACKGROUNDS */
+    /* LIGHT MODE OVERRIDES */
     :root[data-mode="light"] {
       --btn-text: #ffffff;
     }
@@ -248,14 +248,38 @@
     .cog-btn-wrapper:active {
       transform: scale(0.95);
     }
-    .cog-label {
+
+    .vague-btn-wrapper {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--input-bg);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 10;
+    }
+    .vague-btn-wrapper:hover {
+      border-color: var(--text-secondary);
+      transform: translateY(-1px);
+    }
+    .vague-btn-wrapper:active {
+      transform: scale(0.95);
+    }
+
+    .cog-label, .vague-label {
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-secondary);
       letter-spacing: 0.03em;
       transition: color 0.2s ease;
     }
-    .cog-btn-wrapper:hover .cog-label {
+    .cog-btn-wrapper:hover .cog-label, .vague-btn-wrapper:hover .vague-label {
       color: var(--text-primary);
     }
 
@@ -572,6 +596,95 @@
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
 
+    /* 4-PILL + 3-DOT VAGUE LAYOUT STYLES */
+    .vague-pills-container {
+      display: none;
+      gap: 10px;
+      width: 100%;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .vague-pill {
+      height: 12px;
+      border-radius: 999px;
+      background-color: var(--circle-bg);
+      border: 1px solid transparent;
+      box-sizing: border-box;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex: 1;
+    }
+
+    /* CIRCULAR BREAK DOTS - ENLARGED & STYLED LIKE DETAILED MODE BREAK SEGMENTS */
+    .vague-break-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--circle-bg);
+      border: 1.5px solid transparent;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* COMPLETED WORK PILL */
+    .vague-pill.active-work {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      opacity: 1;
+    }
+
+    /* COMPLETED BREAK DOT (MATCHING DETAILED BREAK SEGMENT STYLING: BREAK ACCENT FILL + TEXT-PRIMARY BORDER) */
+    .vague-break-dot.active-break {
+      background-color: var(--break-accent);
+      border-color: var(--text-primary);
+      opacity: 1;
+    }
+
+    /* CURRENT ACTIVE PHASE BREATHING ANIMATION (VAGUE MODE) */
+    @keyframes vagueBreathingPulse {
+      0% {
+        opacity: 0.6;
+        transform: scale(0.96);
+        box-shadow: 0 0 2px var(--accent);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.08);
+        box-shadow: 0 0 12px var(--accent);
+      }
+      100% {
+        opacity: 0.6;
+        transform: scale(0.96);
+        box-shadow: 0 0 2px var(--accent);
+      }
+    }
+    @keyframes vagueBreakBreathingPulse {
+      0% {
+        opacity: 0.6;
+        transform: scale(0.92);
+        box-shadow: 0 0 2px var(--break-accent);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.22);
+        box-shadow: 0 0 14px var(--break-accent);
+      }
+      100% {
+        opacity: 0.6;
+        transform: scale(0.92);
+        box-shadow: 0 0 2px var(--break-accent);
+      }
+    }
+
+    .vague-pill.current-phase {
+      animation: vagueBreathingPulse 2.4s ease-in-out infinite;
+      z-index: 2;
+    }
+    .vague-break-dot.current-phase {
+      animation: vagueBreakBreathingPulse 2.4s ease-in-out infinite;
+      z-index: 2;
+    }
+
     .btn {
       background-color: var(--btn-bg);
       color: var(--btn-text);
@@ -688,6 +801,10 @@
 
 <body>
 <div class="container">
+  <div class="vague-btn-wrapper" onclick="toggleVagueMode()">
+    <span class="vague-label" id="vague-btn-text">Time: Detailed</span>
+  </div>
+
   <div class="cog-btn-wrapper" onclick="toggleModal(true)">
     <span class="cog-label">Colors</span>
   </div>
@@ -712,13 +829,15 @@
     </div>
   </div>
 
-  <!-- Timeline Bar -->
+  <!-- Timeline Container -->
   <div class="timeline-container">
     <div class="timeline-label">
       <span>Shift Progress</span>
       <span id="shift-progress-percent">0%</span>
     </div>
-    <div class="timeline-wrapper">
+
+    <!-- Detailed Continuous Bar -->
+    <div class="timeline-wrapper" id="detailed-timeline-wrapper">
       <div class="break-time-badge" id="badge-b1"></div>
       <div class="break-time-badge" id="badge-lunch"></div>
       <div class="break-time-badge" id="badge-b2"></div>
@@ -729,6 +848,17 @@
         <div class="timeline-break-segment" id="seg-lunch"></div>
         <div class="timeline-break-segment" id="seg-b2"></div>
       </div>
+    </div>
+
+    <!-- 4-Pill + 3-Dot Vague Layout -->
+    <div class="vague-pills-container" id="vague-pills-container">
+      <div class="vague-pill" id="pill-w1"></div>
+      <div class="vague-break-dot" id="pill-b1"></div>
+      <div class="vague-pill" id="pill-w2"></div>
+      <div class="vague-break-dot" id="pill-lunch"></div>
+      <div class="vague-pill" id="pill-w3"></div>
+      <div class="vague-break-dot" id="pill-b2"></div>
+      <div class="vague-pill" id="pill-w4"></div>
     </div>
   </div>
 </div>
@@ -790,6 +920,49 @@
 </div>
 
 <script>
+  let isVagueMode = false;
+
+  function toggleVagueMode() {
+    isVagueMode = !isVagueMode;
+    const btnText = document.getElementById('vague-btn-text');
+    const clock = document.getElementById('live-clock');
+    const timeRem = document.getElementById('time-remaining');
+    const percentTxt = document.getElementById('shift-progress-percent');
+    const detailedWrapper = document.getElementById('detailed-timeline-wrapper');
+    const vagueContainer = document.getElementById('vague-pills-container');
+
+    if (isVagueMode) {
+      btnText.innerText = "Time: Vague";
+      clock.style.display = "none";
+      timeRem.style.display = "none";
+      percentTxt.style.display = "none";
+      detailedWrapper.style.display = "none";
+      vagueContainer.style.display = "flex";
+    } else {
+      btnText.innerText = "Time: Detailed";
+      clock.style.display = "block";
+      timeRem.style.display = "block";
+      percentTxt.style.display = "inline";
+      detailedWrapper.style.display = "block";
+      vagueContainer.style.display = "none";
+    }
+
+    try {
+      localStorage.setItem('cairo_tracker_vague_mode', isVagueMode ? 'true' : 'false');
+    } catch(e) {}
+
+    evaluateSchedule();
+  }
+
+  function loadSavedVagueMode() {
+    try {
+      const saved = localStorage.getItem('cairo_tracker_vague_mode');
+      if (saved === 'true') {
+        toggleVagueMode();
+      }
+    } catch(e) {}
+  }
+
   function getRealTime() {
     try {
       return new Date(new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" }));
@@ -830,6 +1003,51 @@
     if ("Notification" in window && Notification.permission === "granted") {
       new Notification(title, { body: message });
     }
+  }
+
+  /* --- WEB AUDIO API SYNTHESIZED SOUND CUES --- */
+  function playPhaseSound(type) {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+
+      // Helper to synthesize soft sine chimes
+      const playChimeNote = (freq, startTime, duration, vol = 0.04) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+
+        gain.gain.setValueAtTime(0.0001, startTime);
+        gain.gain.linearRampToValueAtTime(vol, startTime + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(startTime);
+        osc.stop(startTime + duration);
+      };
+
+      const now = ctx.currentTime;
+
+      if (type === 'WORK') {
+        // Upbeat, energizing soft 2-note chime (C5 -> G5)
+        playChimeNote(523.25, now, 0.4, 0.035);
+        playChimeNote(783.99, now + 0.15, 0.7, 0.045);
+      } else if (type === 'BREAK') {
+        // Relaxing, calming warm 2-note chime (E5 -> A4)
+        playChimeNote(659.25, now, 0.35, 0.04);
+        playChimeNote(440.00, now + 0.18, 0.8, 0.04);
+      } else if (type === 'LUNCH') {
+        // Warm, cozy 3-note meal melody (G4 -> C5 -> E5)
+        playChimeNote(392.00, now, 0.3, 0.035);
+        playChimeNote(523.25, now + 0.15, 0.3, 0.04);
+        playChimeNote(659.25, now + 0.32, 0.9, 0.045);
+      }
+    } catch(e) {}
   }
 
   function triggerExpandingWaves() {
@@ -1006,6 +1224,41 @@
     circle.style.strokeDashoffset = offset;
   }
 
+  function updateVaguePills(now, shiftStart, shiftEnd, b1, lunch, b3) {
+    const pillW1 = document.getElementById('pill-w1');
+    const pillB1 = document.getElementById('pill-b1');
+    const pillW2 = document.getElementById('pill-w2');
+    const pillLunch = document.getElementById('pill-lunch');
+    const pillW3 = document.getElementById('pill-w3');
+    const pillB2 = document.getElementById('pill-b2');
+    const pillW4 = document.getElementById('pill-w4');
+
+    const pills = [pillW1, pillB1, pillW2, pillLunch, pillW3, pillB2, pillW4];
+    pills.forEach(p => {
+      p.className = p.className.replace(/\s*(active-(work|break)|current-phase)/g, '');
+    });
+
+    if (now < shiftStart) return;
+
+    // Determine past completed & currently active phase
+    if (now >= shiftStart) pillW1.classList.add('active-work');
+    if (now >= b1.start) pillB1.classList.add('active-break');
+    if (now >= b1.end) pillW2.classList.add('active-work');
+    if (now >= lunch.start) pillLunch.classList.add('active-break');
+    if (now >= lunch.end) pillW3.classList.add('active-work');
+    if (now >= b3.start) pillB2.classList.add('active-break');
+    if (now >= b3.end) pillW4.classList.add('active-work');
+
+    // Assign current breathing pulse element
+    if (now >= shiftStart && now < b1.start) pillW1.classList.add('current-phase');
+    else if (now >= b1.start && now < b1.end) pillB1.classList.add('current-phase');
+    else if (now >= b1.end && now < lunch.start) pillW2.classList.add('current-phase');
+    else if (now >= lunch.start && now < lunch.end) pillLunch.classList.add('current-phase');
+    else if (now >= lunch.end && now < b3.start) pillW3.classList.add('current-phase');
+    else if (now >= b3.start && now < b3.end) pillB2.classList.add('current-phase');
+    else if (now >= b3.end && now < shiftEnd) pillW4.classList.add('current-phase');
+  }
+
   function evaluateSchedule() {
     let now;
     try { now = getRealTime(); } catch(e) { return; }
@@ -1067,6 +1320,14 @@
       progressPercentText.innerText = now < shiftStart ? "0%" : "100%";
       updateCircleProgress(0);
 
+      if (isVagueMode) {
+        if (now >= shiftEnd) {
+          updateVaguePills(shiftEnd, shiftStart, shiftEnd, b1, lunch, b3);
+        } else {
+          updateVaguePills(new Date(0), shiftStart, shiftEnd, b1, lunch, b3);
+        }
+      }
+
       if (now >= shiftEnd && !shiftEndedTriggered && previousPhaseTracked !== 'ENDED' && previousPhaseTracked !== 'WAITING') {
         shiftEndedTriggered = true;
         document.body.classList.add('ambient-glow');
@@ -1079,8 +1340,14 @@
     }
 
     const shiftPercent = Math.min(100, Math.max(0, ((now - shiftStart) / totalShiftMs) * 100));
-    progressBar.style.width = `${shiftPercent}%`;
-    progressPercentText.innerText = `${Math.floor(shiftPercent)}%`;
+    
+    if (isVagueMode) {
+      updateVaguePills(now, shiftStart, shiftEnd, b1, lunch, b3);
+      updateCircleProgress(1);
+    } else {
+      progressBar.style.width = `${shiftPercent}%`;
+      progressPercentText.innerText = `${Math.floor(shiftPercent)}%`;
+    }
 
     let activeBreak = [b1, lunch, b3].find(b => now >= b.start && now < b.end);
     
@@ -1090,11 +1357,15 @@
       statusTxt.innerText = breakNameLabel;
       timeRem.innerText = formatDiff(now, activeBreak.end);
 
-      const totalBreakMs = activeBreak.end - activeBreak.start;
-      const remainingBreakMs = activeBreak.end - now;
-      updateCircleProgress(remainingBreakMs / totalBreakMs);
+      if (!isVagueMode) {
+        const totalBreakMs = activeBreak.end - activeBreak.start;
+        const remainingBreakMs = activeBreak.end - now;
+        updateCircleProgress(remainingBreakMs / totalBreakMs);
+      }
 
       if (previousPhaseTracked !== 'WAITING' && previousPhaseTracked !== currentPhase) {
+        const soundType = activeBreak.name === 'lunch' ? 'LUNCH' : 'BREAK';
+        playPhaseSound(soundType);
         sendPhaseNotification("☕ Break Time Started!", `Time for your ${breakNameLabel}. Take a breath!`);
       }
     } else {
@@ -1111,11 +1382,14 @@
 
       timeRem.innerText = formatDiff(now, currentWorkEnd);
 
-      const totalWorkMs = currentWorkEnd - currentWorkStart;
-      const remainingWorkMs = currentWorkEnd - now;
-      updateCircleProgress(remainingWorkMs / totalWorkMs);
+      if (!isVagueMode) {
+        const totalWorkMs = currentWorkEnd - currentWorkStart;
+        const remainingWorkMs = currentWorkEnd - now;
+        updateCircleProgress(remainingWorkMs / totalWorkMs);
+      }
 
       if (previousPhaseTracked !== 'WAITING' && previousPhaseTracked !== currentPhase && previousPhaseTracked !== 'ENDED') {
+        playPhaseSound('WORK');
         sendPhaseNotification("💼 Back to Work!", "Break time is complete. Let's get focused.");
       }
     }
@@ -1134,6 +1408,7 @@
 
   loadSavedTheme();
   loadSavedSchedule();
+  loadSavedVagueMode();
   autoRequestNotificationPermission();
   updateClock();
   renderSettings();
