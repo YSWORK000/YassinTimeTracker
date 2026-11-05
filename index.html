@@ -25,6 +25,7 @@
       --input-bg-base: #282828;
       --btn-bg-base: #ffffff;
       --btn-text-base: #000000;
+      --break-glow: #ffffff;
     }
     :root[data-palette="pink"] {
       --bg-base: #1a1016;
@@ -38,6 +39,7 @@
       --input-bg-base: #331b2c;
       --btn-bg-base: #f472b6;
       --btn-text-base: #1a1016;
+      --break-glow: #c084fc;
     }
     :root[data-palette="crimson"] {
       --bg-base: #140506;
@@ -51,6 +53,7 @@
       --input-bg-base: #320d10;
       --btn-bg-base: #b91c1c;
       --btn-text-base: #ffffff;
+      --break-glow: #ff6b00;
     }
     :root[data-palette="pastel-green"] {
       --bg-base: #111a14;
@@ -64,6 +67,7 @@
       --input-bg-base: #22382b;
       --btn-bg-base: #a7f3d0;
       --btn-text-base: #111a14;
+      --break-glow: #06b6d4;
     }
     :root[data-palette="blue"] {
       --bg-base: #0f172a;
@@ -77,6 +81,7 @@
       --input-bg-base: #334155;
       --btn-bg-base: #38bdf8;
       --btn-text-base: #0f172a;
+      --break-glow: #38bdf8;
     }
     :root[data-palette="orange"] {
       --bg-base: #1c0d02;
@@ -90,6 +95,7 @@
       --input-bg-base: #3d1d07;
       --btn-bg-base: #fb923c;
       --btn-text-base: #1c0d02;
+      --break-glow: #ef4444;
     }
 
     /* DEFAULT / DARK MODE ASSIGNMENT */
@@ -123,6 +129,7 @@
       --text-primary: #171717;
       --text-secondary: #525252;
       --btn-bg: #171717;
+      --break-glow: #000000;
     }
     :root[data-mode="light"][data-palette="pink"] {
       --bg: #fdf2f8;
@@ -135,6 +142,7 @@
       --text-primary: #be185d;
       --text-secondary: #db2777;
       --btn-bg: #be185d;
+      --break-glow: #f43f5e;
     }
     :root[data-mode="light"][data-palette="crimson"] {
       --bg: #fff1f2;
@@ -147,6 +155,7 @@
       --text-primary: #991b1b;
       --text-secondary: #dc2626;
       --btn-bg: #991b1b;
+      --break-glow: #be185d;
     }
     :root[data-mode="light"][data-palette="pastel-green"] {
       --bg: #f0fdf4;
@@ -159,6 +168,7 @@
       --text-primary: #022c22;
       --text-secondary: #065f46;
       --btn-bg: #064e3b;
+      --break-glow: #10b981;
     }
     :root[data-mode="light"][data-palette="blue"] {
       --bg: #f0f9ff;
@@ -171,6 +181,7 @@
       --text-primary: #082f49;
       --text-secondary: #075985;
       --btn-bg: #0c4a6e;
+      --break-glow: #2563eb;
     }
     :root[data-mode="light"][data-palette="orange"] {
       --bg: #fff7ed;
@@ -183,6 +194,7 @@
       --text-primary: #c2410c;
       --text-secondary: #ea580c;
       --btn-bg: #ea580c;
+      --break-glow: #f59e0b;
     }
 
     body {
@@ -190,7 +202,7 @@
       background-color: var(--bg);
       color: var(--text-primary);
       margin: 0;
-      padding: 24px 16px;
+      padding: 16px 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -217,63 +229,45 @@
       position: relative;
       background-color: var(--card-bg);
       border-radius: 16px;
-      padding: 28px 24px;
+      padding: 24px 20px 20px 20px;
       width: 100%;
       max-width: 460px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-      border: none;
+      margin-bottom: 16px;
+      box-sizing: border-box;
       transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease;
     }
 
-    .cog-btn-wrapper {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    .top-header-bar {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      background: var(--input-bg);
-      padding: 6px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 10;
-    }
-    .cog-btn-wrapper:hover {
-      border-color: var(--text-secondary);
-      transform: translateY(-1px);
-    }
-    .cog-btn-wrapper:active {
-      transform: scale(0.95);
+      margin-bottom: 16px;
+      margin-top: -4px;
+      z-index: 20;
     }
 
-    .vague-btn-wrapper {
-      position: absolute;
-      top: 20px;
-      left: 20px;
+    .cog-btn-wrapper, .vague-btn-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--input-bg);
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 20px;
       cursor: pointer;
       border: 1px solid transparent;
       transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 10;
     }
-    .vague-btn-wrapper:hover {
+    .cog-btn-wrapper:hover, .vague-btn-wrapper:hover {
       border-color: var(--text-secondary);
       transform: translateY(-1px);
     }
-    .vague-btn-wrapper:active {
+    .cog-btn-wrapper:active, .vague-btn-wrapper:active {
       transform: scale(0.95);
     }
 
     .cog-label, .vague-label {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-secondary);
       letter-spacing: 0.03em;
@@ -324,13 +318,13 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.65);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 100;
+      z-index: 1000;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -341,10 +335,12 @@
     }
     .modal-card {
       background-color: var(--card-bg);
-      padding: 24px;
+      padding: 22px;
       border-radius: 16px;
       width: 90%;
-      max-width: 380px;
+      max-width: 400px;
+      max-height: 85vh;
+      overflow-y: auto;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
       transform: scale(0.92);
       transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -439,7 +435,7 @@
       font-size: 0.8rem; 
       font-weight: 600; 
       color: var(--text-secondary); 
-      margin-bottom: 24px; 
+      margin-bottom: 20px; 
       letter-spacing: 0.02em;
     }
 
@@ -533,7 +529,7 @@
     }
     
     .timeline-container {
-      margin-top: 24px;
+      margin-top: 20px;
       margin-bottom: 6px;
     }
     .timeline-label {
@@ -596,13 +592,14 @@
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
 
-    /* 4-PILL + 3-DOT VAGUE LAYOUT STYLES */
+    /* VAGUE FLEX LAYOUT */
     .vague-pills-container {
       display: none;
-      gap: 10px;
+      gap: 8px;
       width: 100%;
       align-items: center;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
     .vague-pill {
       height: 12px;
@@ -612,77 +609,59 @@
       box-sizing: border-box;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       flex: 1;
+      min-width: 18px;
     }
 
-    /* CIRCULAR BREAK DOTS - ENLARGED & STYLED LIKE DETAILED MODE BREAK SEGMENTS */
+    /* LARGER BREAK DOTS */
     .vague-break-dot {
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background-color: var(--circle-bg);
-      border: 1.5px solid transparent;
+      background-color: var(--break-accent);
+      border: 1.5px solid var(--text-primary);
       flex-shrink: 0;
       box-sizing: border-box;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* COMPLETED WORK PILL */
+    /* ACTIVE WORK PILL BREATHING PULSE */
     .vague-pill.active-work {
       background-color: var(--accent);
       border-color: var(--accent);
       opacity: 1;
     }
+    .vague-pill.in-progress-work {
+      animation: vagueBreathingPulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes vagueBreathingPulse {
+      0% {
+        opacity: 0.55;
+        transform: scaleY(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scaleY(1.15);
+      }
+    }
 
-    /* COMPLETED BREAK DOT (MATCHING DETAILED BREAK SEGMENT STYLING: BREAK ACCENT FILL + TEXT-PRIMARY BORDER) */
+    /* ACTIVE BREAK DOT BREATHING PULSE */
     .vague-break-dot.active-break {
       background-color: var(--break-accent);
       border-color: var(--text-primary);
       opacity: 1;
     }
-
-    /* CURRENT ACTIVE PHASE BREATHING ANIMATION (VAGUE MODE) */
-    @keyframes vagueBreathingPulse {
-      0% {
-        opacity: 0.6;
-        transform: scale(0.96);
-        box-shadow: 0 0 2px var(--accent);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.08);
-        box-shadow: 0 0 12px var(--accent);
-      }
-      100% {
-        opacity: 0.6;
-        transform: scale(0.96);
-        box-shadow: 0 0 2px var(--accent);
-      }
+    .vague-break-dot.in-progress-break {
+      animation: vagueBreakBreathingPulse 2.5s ease-in-out infinite alternate;
     }
     @keyframes vagueBreakBreathingPulse {
       0% {
+        transform: scale(1);
         opacity: 0.6;
-        transform: scale(0.92);
-        box-shadow: 0 0 2px var(--break-accent);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.22);
-        box-shadow: 0 0 14px var(--break-accent);
       }
       100% {
-        opacity: 0.6;
-        transform: scale(0.92);
-        box-shadow: 0 0 2px var(--break-accent);
+        transform: scale(1.35);
+        opacity: 1;
       }
-    }
-
-    .vague-pill.current-phase {
-      animation: vagueBreathingPulse 2.4s ease-in-out infinite;
-      z-index: 2;
-    }
-    .vague-break-dot.current-phase {
-      animation: vagueBreakBreathingPulse 2.4s ease-in-out infinite;
-      z-index: 2;
     }
 
     .btn {
@@ -758,7 +737,130 @@
       transform: scale(0.97);
     }
 
-    .full-width { margin-top: 20px; width: 100%; }
+    /* FULL-WIDTH MANAGE BREAKS BUTTON */
+    .edit-breaks-btn {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--circle-bg);
+      color: var(--text-primary);
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .edit-breaks-btn:hover {
+      border-color: var(--text-secondary);
+      transform: translateY(-1px);
+    }
+    .edit-breaks-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* BREAK EDIT MODAL LIST STYLES */
+    .break-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--input-bg);
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      border: 1px solid var(--circle-bg);
+    }
+    .break-row-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      min-width: 60px;
+    }
+    .break-row-inputs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+    .remove-break-btn {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .remove-break-btn:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+    .add-break-btn {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px dashed var(--text-secondary);
+      color: var(--text-primary);
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .add-break-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* SECRET LOVE MESSAGE MODAL CARD */
+    .secret-love-card {
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(192, 132, 252, 0.2));
+      border: 1px solid rgba(244, 114, 182, 0.4);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(244, 114, 182, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .secret-heart-icon {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      animation: heartPulse 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes heartPulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.18); opacity: 1; filter: drop-shadow(0 0 12px #f472b6); }
+    }
+    .secret-love-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+    }
+
+    .full-width { margin-top: 18px; width: 100%; }
     .save-toast { 
       text-align: center; 
       font-size: 0.8rem; 
@@ -794,19 +896,22 @@
       opacity: 0.45;
       letter-spacing: 0.05em;
       margin-top: 14px;
-      margin-bottom: -10px;
+      margin-bottom: -6px;
     }
   </style>
 </head>
 
 <body>
 <div class="container">
-  <div class="vague-btn-wrapper" onclick="toggleVagueMode()">
-    <span class="vague-label" id="vague-btn-text">Time: Detailed</span>
-  </div>
+  <!-- TOP HEADER BUTTON BAR -->
+  <div class="top-header-bar">
+    <div class="vague-btn-wrapper" onclick="toggleVagueMode()">
+      <span class="vague-label" id="vague-btn-text">Time: Detailed</span>
+    </div>
 
-  <div class="cog-btn-wrapper" onclick="toggleModal(true)">
-    <span class="cog-label">Colors</span>
+    <div class="cog-btn-wrapper" onclick="toggleColorsModal(true)">
+      <span class="cog-label">Colors</span>
+    </div>
   </div>
 
   <h2>Yassin's Time Tracker</h2>
@@ -838,35 +943,33 @@
 
     <!-- Detailed Continuous Bar -->
     <div class="timeline-wrapper" id="detailed-timeline-wrapper">
-      <div class="break-time-badge" id="badge-b1"></div>
-      <div class="break-time-badge" id="badge-lunch"></div>
-      <div class="break-time-badge" id="badge-b2"></div>
-      
       <div class="timeline-bar" id="timeline-bar">
         <div class="timeline-progress" id="timeline-progress"></div>
-        <div class="timeline-break-segment" id="seg-b1"></div>
-        <div class="timeline-break-segment" id="seg-lunch"></div>
-        <div class="timeline-break-segment" id="seg-b2"></div>
+        <div id="dynamic-timeline-segments"></div>
       </div>
+      <div id="dynamic-timeline-badges"></div>
     </div>
 
-    <!-- 4-Pill + 3-Dot Vague Layout -->
-    <div class="vague-pills-container" id="vague-pills-container">
-      <div class="vague-pill" id="pill-w1"></div>
-      <div class="vague-break-dot" id="pill-b1"></div>
-      <div class="vague-pill" id="pill-w2"></div>
-      <div class="vague-break-dot" id="pill-lunch"></div>
-      <div class="vague-pill" id="pill-w3"></div>
-      <div class="vague-break-dot" id="pill-b2"></div>
-      <div class="vague-pill" id="pill-w4"></div>
-    </div>
+    <!-- Dynamic Vague Layout -->
+    <div class="vague-pills-container" id="vague-pills-container"></div>
   </div>
 </div>
 
 <div class="container">
   <h3>Schedule Settings (24-Hour)</h3>
-  <div class="settings-grid" id="settings-grid"></div>
-  <button class="btn full-width" onclick="saveAndApply()">Save & Apply Schedule</button>
+  <div class="settings-grid">
+    <div class="row-two">
+      <div class="setting-item"><label>Shift Start</label><div class="time-inputs" id="shift-start-inputs"></div></div>
+      <div class="setting-item"><label>Shift End</label><div class="time-inputs" id="shift-end-inputs"></div></div>
+    </div>
+
+    <!-- CLEAN MANAGE BREAKS BUTTON -->
+    <button class="edit-breaks-btn" type="button" onclick="toggleBreaksModal(true)">
+      <span>Manage Breaks (<span id="break-count-badge">3</span>)</span>
+    </button>
+  </div>
+
+  <button class="btn full-width" type="button" onclick="saveAndApply()">Save & Apply Schedule</button>
   <div class="save-toast" id="save-toast">Saved to browser cache</div>
 
   <div class="slack-notice">
@@ -876,39 +979,68 @@
   <div class="watermark">Designed by Yassin Sameh • Inspired by Abdulrahman Shehata</div>
 </div>
 
-<!-- Modal -->
-<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this) toggleModal(false)">
+<!-- BREAK MANAGEMENT MODAL -->
+<div class="modal-overlay" id="breaks-modal-overlay" onclick="if(event.target===this) toggleBreaksModal(false)">
+  <div class="modal-card">
+    <div class="modal-title">
+      <span>Edit Breaks</span>
+      <button class="close-modal" type="button" onclick="toggleBreaksModal(false)">✕</button>
+    </div>
+
+    <div id="breaks-list-container"></div>
+
+    <button class="add-break-btn" type="button" onclick="window.addBreakRow()">
+      <span>+ Add Break</span>
+    </button>
+    
+    <button class="btn full-width" style="margin-top: 14px;" type="button" onclick="saveBreaksModal()">Done</button>
+  </div>
+</div>
+
+<!-- SECRET LOVE MESSAGE MODAL -->
+<div class="modal-overlay" id="secret-modal-overlay" onclick="if(event.target===this) toggleSecretModal(false)">
+  <div class="modal-card secret-love-card">
+    <div class="secret-heart-icon">💖</div>
+    <div class="secret-love-text">
+      "I love you so much my sweet baby. Enjoy the update I made it just for you &lt;3"
+    </div>
+    <button class="btn full-width" style="background: #ffffff; color: #be185d;" type="button" onclick="toggleSecretModal(false)">I'll love you forever</button>
+  </div>
+</div>
+
+<!-- COLORS MODAL -->
+<div class="modal-overlay" id="colors-modal-overlay" onclick="if(event.target===this) toggleColorsModal(false)">
   <div class="modal-card">
     <div class="modal-title">
       <span>Appearance Settings</span>
-      <button class="close-modal" onclick="toggleModal(false)">✕</button>
+      <button class="close-modal" type="button" onclick="toggleColorsModal(false)">✕</button>
     </div>
 
     <div class="mode-switch-wrapper">
       <span class="mode-switch-title">Theme Mode</span>
       <div class="pill-toggle-container">
-        <button class="pill-btn" id="btn-mode-dark" onclick="setMode('dark')">Dark</button>
-        <button class="pill-btn" id="btn-mode-light" onclick="setMode('light')">Light</button>
+        <button class="pill-btn" id="btn-mode-dark" type="button" onclick="setMode('dark')">Dark</button>
+        <button class="pill-btn" id="btn-mode-light" type="button" onclick="setMode('light')">Light</button>
       </div>
     </div>
 
     <div class="theme-options">
-      <button class="theme-btn" onclick="setPalette('monochrome')">
+      <button class="theme-btn" type="button" onclick="setPalette('monochrome')">
         <span class="theme-dot" style="background:#888888; border:1px solid #ffffff;"></span> Monochrome
       </button>
-      <button class="theme-btn" onclick="setPalette('pink')">
+      <button class="theme-btn" type="button" onclick="setPalette('pink')">
         <span class="theme-dot" style="background:#f472b6"></span> Vintage Pink
       </button>
-      <button class="theme-btn" onclick="setPalette('crimson')">
+      <button class="theme-btn" type="button" onclick="setPalette('crimson')">
         <span class="theme-dot" style="background:#b91c1c"></span> Crimson Red
       </button>
-      <button class="theme-btn" onclick="setPalette('pastel-green')">
+      <button class="theme-btn" type="button" onclick="setPalette('pastel-green')">
         <span class="theme-dot" style="background:#a7f3d0"></span> Pastel Green
       </button>
-      <button class="theme-btn" onclick="setPalette('blue')">
+      <button class="theme-btn" type="button" onclick="setPalette('blue')">
         <span class="theme-dot" style="background:#38bdf8"></span> Slate Blue
       </button>
-      <button class="theme-btn" onclick="setPalette('orange')">
+      <button class="theme-btn" type="button" onclick="setPalette('orange')">
         <span class="theme-dot" style="background:#fb923c"></span> Amber Orange
       </button>
     </div>
@@ -1005,51 +1137,6 @@
     }
   }
 
-  /* --- WEB AUDIO API SYNTHESIZED SOUND CUES --- */
-  function playPhaseSound(type) {
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
-
-      // Helper to synthesize soft sine chimes
-      const playChimeNote = (freq, startTime, duration, vol = 0.04) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = 'sine';
-        osc.frequency.value = freq;
-
-        gain.gain.setValueAtTime(0.0001, startTime);
-        gain.gain.linearRampToValueAtTime(vol, startTime + 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc.start(startTime);
-        osc.stop(startTime + duration);
-      };
-
-      const now = ctx.currentTime;
-
-      if (type === 'WORK') {
-        // Upbeat, energizing soft 2-note chime (C5 -> G5)
-        playChimeNote(523.25, now, 0.4, 0.035);
-        playChimeNote(783.99, now + 0.15, 0.7, 0.045);
-      } else if (type === 'BREAK') {
-        // Relaxing, calming warm 2-note chime (E5 -> A4)
-        playChimeNote(659.25, now, 0.35, 0.04);
-        playChimeNote(440.00, now + 0.18, 0.8, 0.04);
-      } else if (type === 'LUNCH') {
-        // Warm, cozy 3-note meal melody (G4 -> C5 -> E5)
-        playChimeNote(392.00, now, 0.3, 0.035);
-        playChimeNote(523.25, now + 0.15, 0.3, 0.04);
-        playChimeNote(659.25, now + 0.32, 0.9, 0.045);
-      }
-    } catch(e) {}
-  }
-
   function triggerExpandingWaves() {
     const wave1 = document.getElementById('wave-1');
     const wave2 = document.getElementById('wave-2');
@@ -1060,40 +1147,43 @@
     setTimeout(() => { wave2.classList.add('wave-active'); }, 300);
   }
 
-  function playEndShiftAudio() {
+  function playPhaseAudio(phaseType) {
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
       const ctx = new AudioCtx();
 
-      triggerExpandingWaves();
+      let notes = [];
+      if (phaseType === 'WORK') {
+        notes = [ { freq: 523.25, start: 0, dur: 0.15 }, { freq: 783.99, start: 0.12, dur: 0.3 } ];
+      } else if (phaseType === 'BREAK') {
+        notes = [ { freq: 659.25, start: 0, dur: 0.15 }, { freq: 440.00, start: 0.12, dur: 0.35 } ];
+      } else if (phaseType === 'END') {
+        triggerExpandingWaves();
+        notes = [
+          { freq: 185.00, start: 0, dur: 2.0 }, { freq: 220.00, start: 0, dur: 2.0 },
+          { freq: 277.18, start: 0.3, dur: 4.0 }, { freq: 415.30, start: 0.3, dur: 4.0 }
+        ];
+      }
 
-      const chordSequence = [
-        { freqs: [185.00, 220.00, 277.18, 329.63],          start: 0.0, duration: 2.0, vol: 0.025 },
-        { freqs: [220.00, 277.18, 329.63, 415.30, 554.37], start: 0.3, duration: 6.0, vol: 0.035 }
-      ];
+      notes.forEach(n => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = n.freq;
 
-      chordSequence.forEach(chord => {
-        chord.freqs.forEach((freq, idx) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
+        const startTime = ctx.currentTime + n.start;
+        const stopTime = startTime + n.dur;
 
-          osc.type = 'sine';
-          osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.0001, startTime);
+        gain.gain.linearRampToValueAtTime(0.03, startTime + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.0001, stopTime);
 
-          const startTime = ctx.currentTime + chord.start;
-          const stopTime = startTime + chord.duration;
+        osc.connect(gain);
+        gain.connect(ctx.destination);
 
-          gain.gain.setValueAtTime(0.0001, startTime);
-          gain.gain.linearRampToValueAtTime(chord.vol, startTime + 0.15);
-          gain.gain.exponentialRampToValueAtTime(0.0001, stopTime);
-
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-
-          osc.start(startTime);
-          osc.stop(stopTime);
-        });
+        osc.start(startTime);
+        osc.stop(stopTime);
       });
     } catch(e) {}
   }
@@ -1145,8 +1235,14 @@
     setMode(currentMode);
   }
 
-  function toggleModal(show) {
-    const modal = document.getElementById('modal-overlay');
+  function toggleColorsModal(show) {
+    const modal = document.getElementById('colors-modal-overlay');
+    if (show) modal.classList.add('active');
+    else modal.classList.remove('active');
+  }
+
+  function toggleSecretModal(show) {
+    const modal = document.getElementById('secret-modal-overlay');
     if (show) modal.classList.add('active');
     else modal.classList.remove('active');
   }
@@ -1154,15 +1250,24 @@
   let config = {
     shiftStart: { h: 9, m: 0 },
     shiftEnd: { h: 17, m: 0 },
-    break1: { h: 11, m: 0, dur: 15 },
-    lunch: { h: 13, m: 0, dur: 30 },
-    break3: { h: 15, m: 0, dur: 15 }
+    breaks: [
+      { h: 11, m: 0, dur: 15 },
+      { h: 13, m: 0, dur: 30 },
+      { h: 15, m: 0, dur: 15 }
+    ]
   };
+
+  let tempBreaks = [];
 
   function loadSavedSchedule() {
     try {
       const saved = localStorage.getItem('cairo_tracker_schedule');
-      if (saved) config = JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.shiftStart && parsed.shiftEnd && Array.isArray(parsed.breaks)) {
+          config = parsed;
+        }
+      }
     } catch(e) {}
   }
 
@@ -1171,32 +1276,117 @@
   let shiftEndedTriggered = false;
   const CIRCLE_CIRCUMFERENCE = 628.32;
 
-  function createTimeSelect(id, defaultH, defaultM) {
-    let html = `<div class="time-inputs"><select id="${id}-h">`;
-    for(let i=0; i<24; i++) html += `<option value="${i}" ${i === defaultH ? 'selected' : ''}>${i.toString().padStart(2, '0')}</option>`;
-    html += `</select>:<select id="${id}-m">`;
-    for(let i=0; i<60; i++) html += `<option value="${i}" ${i === defaultM ? 'selected' : ''}>${i.toString().padStart(2, '0')}</option>`;
-    return html + `</select></div>`;
+  function renderShiftTimeInputs() {
+    const renderSelects = (id, defaultH, defaultM) => {
+      let html = `<select id="${id}-h">`;
+      for(let i=0; i<24; i++) html += `<option value="${i}" ${i === defaultH ? 'selected' : ''}>${i.toString().padStart(2, '0')}</option>`;
+      html += `</select>:<select id="${id}-m">`;
+      for(let i=0; i<60; i++) html += `<option value="${i}" ${i === defaultM ? 'selected' : ''}>${i.toString().padStart(2, '0')}</option>`;
+      return html + `</select>`;
+    };
+
+    document.getElementById('shift-start-inputs').innerHTML = renderSelects('shiftStart', config.shiftStart.h, config.shiftStart.m);
+    document.getElementById('shift-end-inputs').innerHTML = renderSelects('shiftEnd', config.shiftEnd.h, config.shiftEnd.m);
+    document.getElementById('break-count-badge').innerText = config.breaks.length;
   }
 
-  function renderSettings() {
-    const grid = document.getElementById('settings-grid');
-    grid.innerHTML = `
-      <div class="row-two">
-        <div class="setting-item"><label>Shift Start</label>${createTimeSelect('shiftStart', config.shiftStart.h, config.shiftStart.m)}</div>
-        <div class="setting-item"><label>Shift End</label>${createTimeSelect('shiftEnd', config.shiftEnd.h, config.shiftEnd.m)}</div>
-      </div>
-      <div class="setting-item"><label>Break 1</label>${createTimeSelect('break1', config.break1.h, config.break1.m)}</div>
-      <div class="setting-item"><label>Lunch</label>${createTimeSelect('lunch', config.lunch.h, config.lunch.m)}</div>
-      <div class="setting-item"><label>Break 2</label>${createTimeSelect('break3', config.break3.h, config.break3.m)}</div>
-    `;
+  function toggleBreaksModal(show) {
+    const modal = document.getElementById('breaks-modal-overlay');
+    if (show) {
+      tempBreaks = JSON.parse(JSON.stringify(config.breaks));
+      renderBreaksModalList();
+      modal.classList.add('active');
+    } else {
+      modal.classList.remove('active');
+    }
+  }
+
+  function renderBreaksModalList() {
+    const container = document.getElementById('breaks-list-container');
+    container.innerHTML = '';
+
+    tempBreaks.forEach((b, idx) => {
+      const row = document.createElement('div');
+      row.className = 'break-row';
+
+      let hSelect = `<select onchange="window.updateTempBreak(${idx}, 'h', this.value)">`;
+      for(let i=0; i<24; i++) hSelect += `<option value="${i}" ${i === b.h ? 'selected' : ''}>${i.toString().padStart(2, '0')}</option>`;
+      hSelect += `</select>`;
+
+      let mSelect = `<select onchange="window.updateTempBreak(${idx}, 'm', this.value)">`;
+      for(let i=0; i<60; i++) mSelect += `<option value="${i}" ${i === b.m ? 'selected' : ''}>${i.toString().padStart(2, '0')}</option>`;
+      mSelect += `</select>`;
+
+      let durSelect = `<select onchange="window.updateTempBreak(${idx}, 'dur', this.value)">`;
+      [5, 10, 15, 20, 25, 30, 45, 60, 90].forEach(d => {
+        durSelect += `<option value="${d}" ${d === b.dur ? 'selected' : ''}>${d}m</option>`;
+      });
+      durSelect += `</select>`;
+
+      row.innerHTML = `
+        <div class="break-row-title">Break ${idx + 1}</div>
+        <div class="break-row-inputs">
+          ${hSelect}:${mSelect}
+          ${durSelect}
+        </div>
+        <button class="remove-break-btn" type="button" onclick="window.removeBreakRow(${idx})">✕</button>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  window.updateTempBreak = function(idx, key, value) {
+    if (tempBreaks[idx]) {
+      tempBreaks[idx][key] = parseInt(value);
+    }
+  };
+
+  window.addBreakRow = function() {
+    let lastH = 12;
+    let lastM = 0;
+    if (tempBreaks.length > 0) {
+      lastH = tempBreaks[tempBreaks.length - 1].h + 1;
+      if (lastH >= 24) lastH = 23;
+    }
+    tempBreaks.push({ h: lastH, m: lastM, dur: 15 });
+    renderBreaksModalList();
+  };
+
+  window.removeBreakRow = function(idx) {
+    tempBreaks.splice(idx, 1);
+    renderBreaksModalList();
+  };
+
+  function checkSecretUnlock() {
+    if (config.breaks.length === 3) {
+      const allSecretMatch = config.breaks.every(b => b.h === 11 && b.m === 11 && b.dur === 90);
+      if (allSecretMatch) {
+        setTimeout(() => { toggleSecretModal(true); }, 300);
+      }
+    }
+  }
+
+  function saveBreaksModal() {
+    config.breaks = JSON.parse(JSON.stringify(tempBreaks));
+    config.breaks.sort((a, b) => (a.h * 60 + a.m) - (b.h * 60 + b.m));
+    document.getElementById('break-count-badge').innerText = config.breaks.length;
+    toggleBreaksModal(false);
+    saveAndApply();
+    checkSecretUnlock();
   }
 
   function saveAndApply() {
-    ['shiftStart', 'shiftEnd', 'break1', 'lunch', 'break3'].forEach(key => {
-      config[key].h = parseInt(document.getElementById(`${key}-h`).value);
-      config[key].m = parseInt(document.getElementById(`${key}-m`).value);
-    });
+    const startH = document.getElementById('shiftStart-h');
+    const startM = document.getElementById('shiftStart-m');
+    const endH = document.getElementById('shiftEnd-h');
+    const endM = document.getElementById('shiftEnd-m');
+
+    if (startH && startM && endH && endM) {
+      config.shiftStart.h = parseInt(startH.value);
+      config.shiftStart.m = parseInt(startM.value);
+      config.shiftEnd.h = parseInt(endH.value);
+      config.shiftEnd.m = parseInt(endM.value);
+    }
 
     try {
       localStorage.setItem('cairo_tracker_schedule', JSON.stringify(config));
@@ -1224,39 +1414,66 @@
     circle.style.strokeDashoffset = offset;
   }
 
-  function updateVaguePills(now, shiftStart, shiftEnd, b1, lunch, b3) {
-    const pillW1 = document.getElementById('pill-w1');
-    const pillB1 = document.getElementById('pill-b1');
-    const pillW2 = document.getElementById('pill-w2');
-    const pillLunch = document.getElementById('pill-lunch');
-    const pillW3 = document.getElementById('pill-w3');
-    const pillB2 = document.getElementById('pill-b2');
-    const pillW4 = document.getElementById('pill-w4');
+  function renderVagueStructure() {
+    const container = document.getElementById('vague-pills-container');
+    const totalBreaks = config.breaks.length;
+    const requiredElements = totalBreaks * 2 + 1;
 
-    const pills = [pillW1, pillB1, pillW2, pillLunch, pillW3, pillB2, pillW4];
-    pills.forEach(p => {
-      p.className = p.className.replace(/\s*(active-(work|break)|current-phase)/g, '');
-    });
+    if (container.children.length !== requiredElements) {
+      container.innerHTML = '';
+      for (let i = 0; i < totalBreaks + 1; i++) {
+        const workPill = document.createElement('div');
+        workPill.className = 'vague-pill';
+        workPill.id = `pill-w${i+1}`;
+        container.appendChild(workPill);
+
+        if (i < totalBreaks) {
+          const breakDot = document.createElement('div');
+          breakDot.className = 'vague-break-dot';
+          breakDot.id = `pill-b${i+1}`;
+          container.appendChild(breakDot);
+        }
+      }
+    }
+  }
+
+  function updateVaguePills(now, shiftStart, parsedBreaks) {
+    const totalBreaks = parsedBreaks.length;
+    
+    for (let i = 0; i < totalBreaks + 1; i++) {
+      const w = document.getElementById(`pill-w${i+1}`);
+      if (w) w.className = 'vague-pill';
+      if (i < totalBreaks) {
+        const b = document.getElementById(`pill-b${i+1}`);
+        if (b) b.className = 'vague-break-dot';
+      }
+    }
 
     if (now < shiftStart) return;
 
-    // Determine past completed & currently active phase
-    if (now >= shiftStart) pillW1.classList.add('active-work');
-    if (now >= b1.start) pillB1.classList.add('active-break');
-    if (now >= b1.end) pillW2.classList.add('active-work');
-    if (now >= lunch.start) pillLunch.classList.add('active-break');
-    if (now >= lunch.end) pillW3.classList.add('active-work');
-    if (now >= b3.start) pillB2.classList.add('active-break');
-    if (now >= b3.end) pillW4.classList.add('active-work');
+    for (let i = 0; i < totalBreaks + 1; i++) {
+      let prevPhaseEnd = (i === 0) ? shiftStart : parsedBreaks[i-1].end;
+      let nextPhaseStart = (i < totalBreaks) ? parsedBreaks[i].start : null;
 
-    // Assign current breathing pulse element
-    if (now >= shiftStart && now < b1.start) pillW1.classList.add('current-phase');
-    else if (now >= b1.start && now < b1.end) pillB1.classList.add('current-phase');
-    else if (now >= b1.end && now < lunch.start) pillW2.classList.add('current-phase');
-    else if (now >= lunch.start && now < lunch.end) pillLunch.classList.add('current-phase');
-    else if (now >= lunch.end && now < b3.start) pillW3.classList.add('current-phase');
-    else if (now >= b3.start && now < b3.end) pillB2.classList.add('current-phase');
-    else if (now >= b3.end && now < shiftEnd) pillW4.classList.add('current-phase');
+      const wPill = document.getElementById(`pill-w${i+1}`);
+      if (now >= prevPhaseEnd) {
+        if (wPill) wPill.classList.add('active-work');
+        if (nextPhaseStart && now >= prevPhaseEnd && now < nextPhaseStart) {
+          if (wPill) wPill.classList.add('in-progress-work');
+        }
+      }
+
+      if (i < totalBreaks) {
+        const bDot = document.getElementById(`pill-b${i+1}`);
+        const bObj = parsedBreaks[i];
+        if (now >= bObj.start) {
+          if (bDot) bDot.classList.add('active-break');
+          if (now < bObj.end) {
+            if (bDot) bDot.classList.add('in-progress-break');
+          }
+        }
+      }
+    }
   }
 
   function evaluateSchedule() {
@@ -1271,17 +1488,13 @@
       else shiftEnd.setDate(shiftEnd.getDate() + 1);
     }
 
-    const buildBreak = (key, durMins) => {
-      let b = getTargetTime(config[key].h, config[key].m, shiftStart);
-      if (b < shiftStart) b.setDate(b.getDate() + 1);
-      let bEnd = new Date(b);
-      bEnd.setMinutes(bEnd.getMinutes() + durMins);
-      return { start: b, end: bEnd, name: key };
-    };
-
-    let b1 = buildBreak('break1', config.break1.dur);
-    let lunch = buildBreak('lunch', config.lunch.dur);
-    let b3 = buildBreak('break3', config.break3.dur);
+    const parsedBreaks = config.breaks.map((bk, idx) => {
+      let bStart = getTargetTime(bk.h, bk.m, shiftStart);
+      if (bStart < shiftStart) bStart.setDate(bStart.getDate() + 1);
+      let bEnd = new Date(bStart);
+      bEnd.setMinutes(bEnd.getMinutes() + bk.dur);
+      return { start: bStart, end: bEnd, name: `BREAK ${idx + 1}` };
+    });
 
     const statusTxt = document.getElementById('status-text');
     const timeRem = document.getElementById('time-remaining');
@@ -1289,28 +1502,32 @@
     const progressPercentText = document.getElementById('shift-progress-percent');
 
     const totalShiftMs = shiftEnd - shiftStart;
-    const updateBreakSegment = (elemId, badgeId, breakObj) => {
-      const seg = document.getElementById(elemId);
-      const badge = document.getElementById(badgeId);
-      if (totalShiftMs > 0 && breakObj.start >= shiftStart && breakObj.end <= shiftEnd) {
-        const left = ((breakObj.start - shiftStart) / totalShiftMs) * 100;
-        const width = ((breakObj.end - breakObj.start) / totalShiftMs) * 100;
+
+    const segContainer = document.getElementById('dynamic-timeline-segments');
+    const badgeContainer = document.getElementById('dynamic-timeline-badges');
+    segContainer.innerHTML = '';
+    badgeContainer.innerHTML = '';
+
+    parsedBreaks.forEach(bObj => {
+      if (totalShiftMs > 0 && bObj.start >= shiftStart && bObj.end <= shiftEnd) {
+        const left = ((bObj.start - shiftStart) / totalShiftMs) * 100;
+        const width = ((bObj.end - bObj.start) / totalShiftMs) * 100;
+
+        const seg = document.createElement('div');
+        seg.className = 'timeline-break-segment';
         seg.style.left = `${left}%`;
         seg.style.width = `${width}%`;
-        seg.style.display = 'block';
+        segContainer.appendChild(seg);
 
+        const badge = document.createElement('div');
+        badge.className = 'break-time-badge';
         badge.style.left = `${left + (width / 2)}%`;
-        badge.innerText = format12HourShort(breakObj.start);
-        badge.style.display = 'block';
-      } else {
-        seg.style.display = 'none';
-        badge.style.display = 'none';
+        badge.innerText = format12HourShort(bObj.start);
+        badgeContainer.appendChild(badge);
       }
-    };
+    });
 
-    updateBreakSegment('seg-b1', 'badge-b1', b1);
-    updateBreakSegment('seg-lunch', 'badge-lunch', lunch);
-    updateBreakSegment('seg-b2', 'badge-b2', b3);
+    renderVagueStructure();
 
     if (now < shiftStart || now >= shiftEnd) {
       currentPhase = 'ENDED';
@@ -1322,16 +1539,16 @@
 
       if (isVagueMode) {
         if (now >= shiftEnd) {
-          updateVaguePills(shiftEnd, shiftStart, shiftEnd, b1, lunch, b3);
+          updateVaguePills(shiftEnd, shiftStart, parsedBreaks);
         } else {
-          updateVaguePills(new Date(0), shiftStart, shiftEnd, b1, lunch, b3);
+          updateVaguePills(new Date(0), shiftStart, parsedBreaks);
         }
       }
 
       if (now >= shiftEnd && !shiftEndedTriggered && previousPhaseTracked !== 'ENDED' && previousPhaseTracked !== 'WAITING') {
         shiftEndedTriggered = true;
         document.body.classList.add('ambient-glow');
-        playEndShiftAudio();
+        playPhaseAudio('END');
         sendPhaseNotification("🎉 Shift Complete!", "Great job today! Time to log off and relax.");
       }
 
@@ -1342,19 +1559,18 @@
     const shiftPercent = Math.min(100, Math.max(0, ((now - shiftStart) / totalShiftMs) * 100));
     
     if (isVagueMode) {
-      updateVaguePills(now, shiftStart, shiftEnd, b1, lunch, b3);
+      updateVaguePills(now, shiftStart, parsedBreaks);
       updateCircleProgress(1);
     } else {
       progressBar.style.width = `${shiftPercent}%`;
       progressPercentText.innerText = `${Math.floor(shiftPercent)}%`;
     }
 
-    let activeBreak = [b1, lunch, b3].find(b => now >= b.start && now < b.end);
+    let activeBreak = parsedBreaks.find(b => now >= b.start && now < b.end);
     
     if (activeBreak) {
       currentPhase = activeBreak.name;
-      const breakNameLabel = activeBreak.name === 'break3' ? 'BREAK 2' : activeBreak.name.toUpperCase();
-      statusTxt.innerText = breakNameLabel;
+      statusTxt.innerText = activeBreak.name;
       timeRem.innerText = formatDiff(now, activeBreak.end);
 
       if (!isVagueMode) {
@@ -1364,9 +1580,8 @@
       }
 
       if (previousPhaseTracked !== 'WAITING' && previousPhaseTracked !== currentPhase) {
-        const soundType = activeBreak.name === 'lunch' ? 'LUNCH' : 'BREAK';
-        playPhaseSound(soundType);
-        sendPhaseNotification("☕ Break Time Started!", `Time for your ${breakNameLabel}. Take a breath!`);
+        playPhaseAudio('BREAK');
+        sendPhaseNotification("☕ Break Time Started!", `Time for your ${activeBreak.name}. Take a breath!`);
       }
     } else {
       currentPhase = 'WORKING';
@@ -1375,10 +1590,14 @@
       let currentWorkStart = shiftStart;
       let currentWorkEnd = shiftEnd;
 
-      if (now < b1.start) { currentWorkStart = shiftStart; currentWorkEnd = b1.start; }
-      else if (now >= b1.end && now < lunch.start) { currentWorkStart = b1.end; currentWorkEnd = lunch.start; }
-      else if (now >= lunch.end && now < b3.start) { currentWorkStart = lunch.end; currentWorkEnd = b3.start; }
-      else if (now >= b3.end) { currentWorkStart = b3.end; currentWorkEnd = shiftEnd; }
+      for (let i = 0; i < parsedBreaks.length; i++) {
+        if (now < parsedBreaks[i].start) {
+          currentWorkEnd = parsedBreaks[i].start;
+          break;
+        } else if (now >= parsedBreaks[i].end) {
+          currentWorkStart = parsedBreaks[i].end;
+        }
+      }
 
       timeRem.innerText = formatDiff(now, currentWorkEnd);
 
@@ -1389,7 +1608,7 @@
       }
 
       if (previousPhaseTracked !== 'WAITING' && previousPhaseTracked !== currentPhase && previousPhaseTracked !== 'ENDED') {
-        playPhaseSound('WORK');
+        playPhaseAudio('WORK');
         sendPhaseNotification("💼 Back to Work!", "Break time is complete. Let's get focused.");
       }
     }
@@ -1411,7 +1630,7 @@
   loadSavedVagueMode();
   autoRequestNotificationPermission();
   updateClock();
-  renderSettings();
+  renderShiftTimeInputs();
   setInterval(evaluateSchedule, 1000);
 </script>
 </body>
