@@ -1366,9 +1366,22 @@
     }
   }
 
+  function getShiftOffset(h, m, startH, startM) {
+    let breakMins = h * 60 + m;
+    let startMins = startH * 60 + startM;
+    let offset = breakMins - startMins;
+    if (offset < 0) offset += 1440; // Wrap midnight-crossing breaks forward
+    return offset;
+  }
+
   function saveBreaksModal() {
     config.breaks = JSON.parse(JSON.stringify(tempBreaks));
-    config.breaks.sort((a, b) => (a.h * 60 + a.m) - (b.h * 60 + b.m));
+    
+    // Sort breaks dynamically relative to shift start time (handles midnight loops)
+    const sH = config.shiftStart.h;
+    const sM = config.shiftStart.m;
+    config.breaks.sort((a, b) => getShiftOffset(a.h, a.m, sH, sM) - getShiftOffset(b.h, b.m, sH, sM));
+
     document.getElementById('break-count-badge').innerText = config.breaks.length;
     toggleBreaksModal(false);
     saveAndApply();
@@ -1491,10 +1504,19 @@
     const parsedBreaks = config.breaks.map((bk, idx) => {
       let bStart = getTargetTime(bk.h, bk.m, shiftStart);
       if (bStart < shiftStart) bStart.setDate(bStart.getDate() + 1);
+      
+      // Keep break inside shift boundary if shift crosses midnight
+      if (bStart >= shiftEnd) {
+        bStart.setDate(bStart.getDate() - 1);
+      }
+
       let bEnd = new Date(bStart);
       bEnd.setMinutes(bEnd.getMinutes() + bk.dur);
       return { start: bStart, end: bEnd, name: `BREAK ${idx + 1}` };
     });
+
+    // Ensure parsed breaks are sequentially aligned inside shift timeline
+    parsedBreaks.sort((a, b) => a.start - b.start);
 
     const statusTxt = document.getElementById('status-text');
     const timeRem = document.getElementById('time-remaining');
